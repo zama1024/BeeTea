@@ -5,17 +5,20 @@ import { Provider } from 'react-redux';
 import App from './App.jsx';
 import { HashRouter } from 'react-router-dom';
 import GreetingContainer from './greeting/greeting_container';
+import { loginContainer, signupContainer } from './user/user_container';
 
 
 
 const Root = ({ store }) => (
   <Provider store={ store }>
-    <Router history={ hashHistory }>
+    <HashRouter>
       <div>
-        <Route exact path="/" component={ App } />
+        <Route path="/" component={ App } />
         <Route exact path="/" component={GreetingContainer} />
+        <Route exact path="/signupForm" component={signupContainer} />
+        <Route exact path="/loginForm" component={loginContainer} />
       </div>
-    </Router>
+    </HashRouter>
   </Provider>
 );
 

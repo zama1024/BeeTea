@@ -1,5 +1,5 @@
 import React from 'react';
-import { hashHistory, replace, Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class Greeting extends React.Component {
   constructor(props){
@@ -13,8 +13,8 @@ class Greeting extends React.Component {
         <h2>Need a ride {frm} the airport?</h2>
         <h2> We got you covered!</h2>
         <div className = "sessionBox">
-          <div>Sign Up</div>
-          <div>Log In</div>
+          <div><Link to='/signupForm' >Sign Up</Link></div>
+          <div><Link to='/loginForm' >Log In</Link></div>
         </div>
       </div>
     );
@@ -23,7 +23,12 @@ class Greeting extends React.Component {
   userPage(){
     return(
       <div>
-        <h3>Welcome, {this.props.currentUser.username}!</h3>
+        <h2>Welcome, {this.props.currentUser.username}!</h2>
+        <h2>Please select a service</h2>
+        <div className="sessionBox">
+          <div><Link to='/taxi'>Taxi</Link></div>
+          <div><Link to='/bus'>Bus</Link></div>
+        </div>
       </div>
     );
   }

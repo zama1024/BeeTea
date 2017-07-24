@@ -18,6 +18,20 @@
   cursor: pointer;
 }
 
+input{
+  font-size: 20px;
+  margin: auto;
+  display: block;
+}
+
+li{
+  margin-top: 15px; 
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+
 .sessionBox{
   margin-top: 10%;
   display: flex;
@@ -34,5 +48,5 @@ body{
 }
 
 #app{
-  margin-bottom: 30%;
+  margin-bottom: 15%;
 }
