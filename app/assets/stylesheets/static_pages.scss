@@ -1,3 +1,38 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#root {
+  width: 300px;
+  height: 500px;;
+  margin: auto;
+  border: 5px solid #ffb45a;
+  text-align: center;
+  border-radius: 10px;
+  font-family: 'roboto', sans-serif;
+}
+
+.sessionBox div{
+  border: 2px solid black;
+  margin: 20px;
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
+}
+
+.sessionBox{
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+body{
+  padding: 70px;
+}
+
+#app h1{
+  font-weight: bolder;
+  color: #e5455c;
+}
+
+#app{
+  margin-bottom: 30%;
+}
