@@ -38,6 +38,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'pry-rails'
   gem 'annotate'
+  gem 'bcrypt'
 end
 
 group :development do
