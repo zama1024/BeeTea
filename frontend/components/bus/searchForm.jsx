@@ -9,7 +9,7 @@ class SearchForm extends React.Component {
       terminal: '',
       number_of_guests: 0,
       boarding_time: '',
-      errors: []
+      destination: ''
     };
   }
 
@@ -20,17 +20,12 @@ class SearchForm extends React.Component {
   }
 
   handleSubmit(e){
-    this.setState({errors: []});
     e.preventDefault();
-    if(this.state.errors.length === 0) {
-      this.props.signup(this.state).fail( ({errors}) => {this.setState({ errors });})
-        .then(() => {return this.props.history.push("/");});
-    }
+    this.props.fetchBuses(this.state).then((bus) => {this.props.history.push({pathname: '/booking', state : {bus: bus.buses}});});
   }
 
 
   render(){
-    let errors = this.state.errors.map((el,idx) => <li key={idx}>{el}</li>);
     return(
       <div>
         <h2>Time to book your seats!</h2>
@@ -52,6 +47,16 @@ class SearchForm extends React.Component {
               <option value="B">B</option>
               <option value="C">C</option>
               <option value="D">D</option>
+            </select>
+          </div>
+          <div className="dropdown">
+            <span>Destination &emsp;</span>
+            <select onChange={this.update("destination")} name="destination">
+              <option selected disabled>Choose Destination</option>
+              <option value="Queens">Queens</option>
+              <option value="Brooklyn">Brooklyn</option>
+              <option value="Manhattan">Manhattan</option>
+              <option value="Bronx">Bronx</option>
             </select>
           </div>
           <div className="dropdown">
@@ -91,7 +96,6 @@ class SearchForm extends React.Component {
           <input type="number" onChange={this.update("number_of_guests")}placeholder="Number of Guests"/>
           <input type="submit" value="Search"/>
         </form>
-        {errors}
       </div>
     );
   }

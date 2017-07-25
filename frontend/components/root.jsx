@@ -8,6 +8,7 @@ import GreetingContainer from './greeting/greeting_container';
 import { LoginContainer, SignupContainer } from './user/user_container';
 import Taxi from './taxi/taxi.jsx';
 import BusContainer from './bus/bus_container';
+import BookingContainer from './booking/booking_container';
 
 
 
@@ -21,6 +22,7 @@ const Root = ({ store }) => (
         <Route exact path="/loginForm" component={LoginContainer} />
         <Route exact path="/taxi" component={Taxi} />
         <Route exact path="/bus" component={BusContainer} />
+        <Route exact path="/booking" component={BookingContainer} />
       </div>
     </HashRouter>
   </Provider>
