@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import searchForm from './searchForm';
-import { logout } from '../../actions/session_actions';
+import { fetchBuses } from '../../actions/bus_actions';
 
 
 const mapStateToProps = (state,ownProps) => {
@@ -11,7 +11,7 @@ const mapStateToProps = (state,ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logout())
+  fetchBuses: (buses) => dispatch(fetchBuses(buses))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(searchForm);

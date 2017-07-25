@@ -5,8 +5,9 @@ import { Provider } from 'react-redux';
 import App from './App.jsx';
 import { HashRouter } from 'react-router-dom';
 import GreetingContainer from './greeting/greeting_container';
-import { loginContainer, signupContainer } from './user/user_container';
-import taxi from './taxi/taxi.jsx';
+import { LoginContainer, SignupContainer } from './user/user_container';
+import Taxi from './taxi/taxi.jsx';
+import BusContainer from './bus/bus_container';
 
 
 
@@ -16,9 +17,10 @@ const Root = ({ store }) => (
       <div>
         <Route path="/" component={ App } />
         <Route exact path="/" component={GreetingContainer} />
-        <Route exact path="/signupForm" component={signupContainer} />
-        <Route exact path="/loginForm" component={loginContainer} />
-        <Route exact path="/taxi" component={taxi} />
+        <Route exact path="/signupForm" component={SignupContainer} />
+        <Route exact path="/loginForm" component={LoginContainer} />
+        <Route exact path="/taxi" component={Taxi} />
+        <Route exact path="/bus" component={BusContainer} />
       </div>
     </HashRouter>
   </Provider>
