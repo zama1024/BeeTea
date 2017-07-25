@@ -6,6 +6,12 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
   validates :password, length: {minimum: 0}, allow_nil: :true
 
+  has_many :bookings,
+  class_name: "Booking",
+  foreign_key: :user_id,
+  primary_key: :id
+
+
   def self.find_by_credentials(credentials)
     user = User.find_by(username: credentials[:username])
     user && user.is_password?(credentials[:password]) ? user : nil
