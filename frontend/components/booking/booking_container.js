@@ -1,17 +1,20 @@
 import { connect } from 'react-redux';
 import booking from './booking';
-import { makeBooking } from '../../actions/booking_actions';
+import { createBooking } from '../../actions/booking_actions';
 
 
 const mapStateToProps = (state,ownProps) => {
-  debugger
+
   return {
-    currentUser: state.session.currentUser
+    terminal: ownProps.location.state.terminal,
+    num_of_guests: ownProps.location.state.num_of_guests,
+    currentUser: state.session.currentUser,
+    bus: state.bus
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  makeBooking: (bookingInfo) => dispatch(makeBooking(bookingInfo))
+  createBooking: (bookingInfo) => dispatch(createBooking(bookingInfo))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(booking);

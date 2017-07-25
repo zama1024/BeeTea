@@ -21,7 +21,7 @@ class SearchForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.fetchBuses(this.state).then((bus) => {this.props.history.push({pathname: '/booking', state : {bus: bus.buses}});});
+    this.props.fetchBuses(this.state).then((bus) => {this.props.history.push({pathname: '/booking', state : {terminal: this.state.terminal, num_of_guests: this.state.number_of_guests, bus: bus.buses}});});
   }
 
 

@@ -5,10 +5,12 @@ import { Provider } from 'react-redux';
 import App from './App.jsx';
 import { HashRouter } from 'react-router-dom';
 import GreetingContainer from './greeting/greeting_container';
-import { LoginContainer, SignupContainer } from './user/user_container';
+import SignupContainer from './user/signup_container';
+import LoginContainer from './user/login_container';
 import Taxi from './taxi/taxi.jsx';
 import BusContainer from './bus/bus_container';
 import BookingContainer from './booking/booking_container';
+import ConfirmationContainer from './confirmation/confirmation_container';
 
 
 
@@ -23,6 +25,7 @@ const Root = ({ store }) => (
         <Route exact path="/taxi" component={Taxi} />
         <Route exact path="/bus" component={BusContainer} />
         <Route exact path="/booking" component={BookingContainer} />
+        <Route exact path="/confirmation" component={ConfirmationContainer} />
       </div>
     </HashRouter>
   </Provider>

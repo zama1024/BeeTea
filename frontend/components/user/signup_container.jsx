@@ -15,5 +15,4 @@ const mapDispatchToProps = (dispatch) => ({
   signup: (user) => dispatch(signup(user)),
 });
 
-export const signupContainer = connect(mapStateToProps, mapDispatchToProps)(signupForm);
-export const loginContainer = connect(mapStateToProps, mapDispatchToProps)(loginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(signupForm);

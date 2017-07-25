@@ -1,4 +1,3 @@
-require 'byebug'
 class Api::BusesController < ApplicationController
 
   def index
@@ -8,7 +7,7 @@ class Api::BusesController < ApplicationController
     boarding_time = params[:boarding_time].split(":")
     start_time_hour = boarding_time[0] + '%'
     start_time_minute = '%' + boarding_time[1]
-    @bus = Bus.where("airport = ? and bus_capacity > ? and start_time LIKE ? and destination = ? and start_time LIKE ?", airport, num_guests,start_time_hour, destination, start_time_minute).first
+    @bus = Bus.where("airport = ? and bus_capacity > ? and start_time LIKE ? and start_time LIKE ?", airport, num_guests,start_time_hour, start_time_minute).first
     render "api/buses/show"
   end
 

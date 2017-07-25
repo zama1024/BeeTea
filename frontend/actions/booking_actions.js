@@ -1,6 +1,6 @@
 import * as APIUtil from "../util/booking_api_util";
 
-export const RECEIVE_BOOKINGS = "RECEIVE_BOOKINGS";
+export const RECEIVE_BOOKING = "RECEIVE_BOOKING";
 
 export function receiveBooking(booking) {
   return {
@@ -10,10 +10,10 @@ export function receiveBooking(booking) {
 }
 
 
-export function fetchBookings() {
+export function fetchBooking() {
   return (dispatch) => {
     return APIUtil.fetchBookings()
-      .then((bookings) => dispatch(receiveBookings(bookings)));
+      .then((booking) => dispatch(receiveBooking(booking)));
   };
 
 }

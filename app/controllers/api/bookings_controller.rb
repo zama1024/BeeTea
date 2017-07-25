@@ -9,7 +9,7 @@ class Api::BookingsController < ApplicationController
     @booking.user_id = current_user.id
     if @booking.save
       @bookings = current_user.bookings
-      render :index
+      render :show
     else
       render json: @booking.errors.full_messages, status: 422
     end
@@ -24,6 +24,6 @@ class Api::BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:airport, :terminal, :num_of_guests, :boarding_time, :bus_id)
+    params.require(:bookingInfo).permit(:airport, :terminal, :num_of_guests, :boarding_time, :bus_id)
   end
 end
