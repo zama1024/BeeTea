@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Greeting extends React.Component {
   constructor(props){
@@ -20,6 +20,11 @@ class Greeting extends React.Component {
     );
   }
 
+  logout(e){
+    e.preventDefault();
+    this.props.logout();
+  }
+
   userPage(){
     return(
       <div>
@@ -29,6 +34,7 @@ class Greeting extends React.Component {
           <div><Link to='/taxi'>Taxi</Link></div>
           <div><Link to='/bus'>Bus</Link></div>
         </div>
+        <div className="box" onClick={this.logout.bind(this)}>Log Out</div>
       </div>
     );
   }
@@ -39,4 +45,4 @@ class Greeting extends React.Component {
   }
 }
 
-export default Greeting;
+export default withRouter(Greeting);

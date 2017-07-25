@@ -18,6 +18,14 @@
   cursor: pointer;
 }
 
+.box{
+  width: 60px;
+  border: 2px solid black;
+  margin: auto;
+  padding: 5px 10px 5px 10px;
+  cursor: pointer;
+}
+
 input{
   font-size: 20px;
   margin: auto;
@@ -25,7 +33,7 @@ input{
 }
 
 li{
-  margin-top: 15px; 
+  margin-top: 15px;
 }
 a{
   text-decoration: none;

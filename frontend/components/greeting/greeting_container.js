@@ -4,13 +4,14 @@ import { logout } from '../../actions/session_actions';
 
 
 const mapStateToProps = (state,ownProps) => {
+
   return {
-    currentUser: state.session.currentUser,
+    currentUser: state.session.currentUser
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: (currentUser) => dispatch(logout(currentUser))
+  logout: () => dispatch(logout())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(greeting);

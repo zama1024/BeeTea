@@ -27,4 +27,10 @@ class Api::SessionsController < ApplicationController
        render json: { base: ["Invalid Request"] }, status: 404
      end
    end
+
+   private
+
+   def user_params
+     params.require(:user).permit(:username, :password)
+   end
 end

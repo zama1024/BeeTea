@@ -6,6 +6,7 @@ import App from './App.jsx';
 import { HashRouter } from 'react-router-dom';
 import GreetingContainer from './greeting/greeting_container';
 import { loginContainer, signupContainer } from './user/user_container';
+import taxi from './taxi/taxi.jsx';
 
 
 
@@ -17,6 +18,7 @@ const Root = ({ store }) => (
         <Route exact path="/" component={GreetingContainer} />
         <Route exact path="/signupForm" component={signupContainer} />
         <Route exact path="/loginForm" component={loginContainer} />
+        <Route exact path="/taxi" component={taxi} />
       </div>
     </HashRouter>
   </Provider>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class SignupForm extends React.Component {
   constructor(props){
@@ -23,12 +23,16 @@ class SignupForm extends React.Component {
     this.setState({errors: []});
     e.preventDefault();
     this.checkErrors();
+    if(this.state.errors.length === 0) {
+      this.props.signup(this.state).fail( ({errors}) => {this.setState({ errors });})
+        .then(() => {return this.props.history.push("/");});
+    }
+
   }
 
   checkErrors(){
     let errorsArr = [];
     if(this.state.card_number.length !== 16 || typeof parseInt(this.card_number) !== 'number'){
-      debugger
       errorsArr.push(["Card number must be a valid 16 digit number, ex. 1111111111111111"]);
     }
     if(!this.checkExpiryDate(this.state.card_expiry_date)){
@@ -51,7 +55,7 @@ class SignupForm extends React.Component {
   }
 
   render(){
-    let errors = this.state.errors.map(el => <li>{el}</li>);
+    let errors = this.state.errors.map((el,idx) => <li key={idx}>{el}</li>);
     return(
       <div>
         <h2>Please sign up first to request the service!</h2>
@@ -60,12 +64,14 @@ class SignupForm extends React.Component {
           <input type="password" onChange={this.update("password")}placeholder="Password"/>
           <input type="text" onChange={this.update("card_number")}placeholder="Credit Card Number"/>
           <input type="text" onChange={this.update("card_expiry_date")}placeholder="Card Expiry Date"/>
-          <input type="submit" placeholder="Sign Up"/>
+          <input type="submit" value="Sign Up"/>
         </form>
         {errors}
+        <h2>Already have an acount?</h2>
+        <div className='box'><Link to='/loginForm'>Log In</Link></div>
       </div>
     );
   }
 }
 
-export default SignupForm;
+export default withRouter(SignupForm);
