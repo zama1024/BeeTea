@@ -20,25 +20,27 @@ class SignupForm extends React.Component {
   }
 
   handleSubmit(e){
-    this.setState({errors: []});
     e.preventDefault();
-    this.checkErrors();
-    if(this.state.errors.length === 0) {
-      this.props.signup(this.state).fail( ({errors}) => {this.setState({ errors });})
-        .then(() => {return this.props.history.push("/");});
-    }
+    this.setState({errors: []});
+    let errorsArr = this.checkErrors();
+    this.setState({errors: errorsArr}, () => {
+      if(this.state.errors.length === 0) {
+        this.props.signup(this.state).fail( ({errors}) => {this.setState({ errors });})
+          .then(() => {this.props.history.push("/");});
+      }
+    });
 
   }
 
   checkErrors(){
     let errorsArr = [];
     if(this.state.card_number.length !== 16 || typeof parseInt(this.card_number) !== 'number'){
-      errorsArr.push(["Card number must be a valid 16 digit number, ex. 1111111111111111"]);
+      errorsArr.push("Card number must be a valid 16 digit number, ex. 1111111111111111");
     }
     if(!this.checkExpiryDate(this.state.card_expiry_date)){
-      errorsArr.push(["Please put a valid expiry date, ex. 12/19"]);
+      errorsArr.push("Please put a valid expiry date, ex. 12/19");
     }
-    this.setState({errors: errorsArr});
+    return errorsArr;
   }
 
   checkExpiryDate(str){
@@ -55,6 +57,13 @@ class SignupForm extends React.Component {
   }
 
   render(){
+    let bottom;
+    if(this.state.errors.length > 0){
+      bottom = <div></div>;
+    }else{
+      bottom = <div><h2>Already have an acount?</h2>
+      <div className='box'><Link to='/loginForm'>Log In</Link></div></div>;
+    }
     let errors = this.state.errors.map((el,idx) => <li key={idx}>{el}</li>);
     return(
       <div>
@@ -67,8 +76,7 @@ class SignupForm extends React.Component {
           <input type="submit" value="Sign Up"/>
         </form>
         {errors}
-        <h2>Already have an acount?</h2>
-        <div className='box'><Link to='/loginForm'>Log In</Link></div>
+        {bottom}
       </div>
     );
   }
