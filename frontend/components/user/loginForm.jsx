@@ -33,7 +33,7 @@ class LoginForm extends React.Component {
           <input type="submit" value="Log In"/>
         </form>
         {this.state.errors}
-        <h2>Don't have an acount?</h2>
+        <h2>Don't have an account?</h2>
         <div className='box'><Link to='/signupForm'>Sign Up</Link></div>
       </div>
     );

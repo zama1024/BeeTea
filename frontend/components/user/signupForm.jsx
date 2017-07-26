@@ -61,7 +61,7 @@ class SignupForm extends React.Component {
     if(this.state.errors.length > 0){
       bottom = <div></div>;
     }else{
-      bottom = <div><h2>Already have an acount?</h2>
+      bottom = <div><h2>Already have an account?</h2>
       <div className='box'><Link to='/loginForm'>Log In</Link></div></div>;
     }
     let errors = this.state.errors.map((el,idx) => <li key={idx}>{el}</li>);
