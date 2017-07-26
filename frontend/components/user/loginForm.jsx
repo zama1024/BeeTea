@@ -6,7 +6,8 @@ class LoginForm extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      errors: [],
     };
   }
 
@@ -18,8 +19,8 @@ class LoginForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.login(this.state);
-    this.props.history.push('/');
+    this.props.login(this.state).fail( ({errors}) => {this.setState({ errors: errors.base[0] });})
+      .then(() => {this.props.history.push("/");});
   }
 
   render(){
@@ -31,6 +32,7 @@ class LoginForm extends React.Component {
           <input type="password" onChange={this.update("password")}placeholder="Password"/>
           <input type="submit" value="Log In"/>
         </form>
+        {this.state.errors}
         <h2>Don't have an acount?</h2>
         <div className='box'><Link to='/signupForm'>Sign Up</Link></div>
       </div>
